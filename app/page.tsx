@@ -325,6 +325,9 @@ export default function Home() {
                 {categoryOptions.map((category) => <option key={category} value={category}>{category}</option>)}
               </select>
             </label>
+            <div className="hero-logo-display">
+              <img src={logo} alt="Avinash Kotekar" className="enlarged-logo" />
+            </div>
           </div>
         </div>
 

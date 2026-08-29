@@ -1477,6 +1477,17 @@ main { position: relative; isolation: isolate; }
 }
 .category-filter select:focus-visible { box-shadow: 0 1px 0 var(--gold); }
 .category-filter option { background: #10100e; color: #f4f1ea; }
+.hero-logo-display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.enlarged-logo {
+  width: clamp(120px, 15vw, 220px);
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(76%) sepia(25%) saturate(754%) hue-rotate(358deg) brightness(89%) contrast(84%);
+}
 .moving-frame { cursor: pointer; }
 .moving-frame:focus-visible { outline: 1px solid var(--gold); outline-offset: -5px; }
 
