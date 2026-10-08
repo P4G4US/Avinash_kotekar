@@ -1,5 +1,7 @@
 "use client";
 
+import { sitePath } from "@/lib/site-path";
+
 import {
   useEffect,
   useRef,
@@ -18,8 +20,7 @@ import {
 
 const logo = "https://avinashkotekar.com/wp-content/uploads/2021/07/LOGO.png";
 
-const categoryOptions = ["All", "Lifestyle", "Real Estate", "Jewellery", "Hospitality", "Portrait", "Travel"] as const;
-type Category = (typeof categoryOptions)[number];
+type Category = "All" | "Hospitality" | "Food & Beverage" | "Architecture" | "Product & Jewellery" | "People & Lifestyle" | "Campaigns & Media";
 type PhotoCategory = Exclude<Category, "All">;
 
 const photographs: Array<{
@@ -29,76 +30,138 @@ const photographs: Array<{
   categories: PhotoCategory[];
 }> = [
   {
-    src: "https://avinashkotekar.com/wp-content/uploads/2026/03/PArk-HyattHyd.jpg",
-    alt: "Guest enjoying a cocktail in warm ambient light",
-    label: "Hospitality",
-    categories: ["Hospitality", "Travel"],
+    src: sitePath("/portfolio/slider/hyatt.jpg"),
+    alt: "A plated dish and wine at Hyatt",
+    label: "Food & Beverage",
+    categories: ["Food & Beverage", "Hospitality"],
   },
   {
-    src: "https://avinashkotekar.com/wp-content/uploads/2026/03/Jewellery.jpg",
-    alt: "Sapphire and diamond jewellery campaign",
+    src: sitePath("/portfolio/slider/jewellery.jpg"),
+    alt: "Sapphire jewellery worn with a warm studio backdrop",
     label: "Jewellery",
-    categories: ["Jewellery"],
+    categories: ["Product & Jewellery"],
   },
   {
-    src: "https://avinashkotekar.com/wp-content/uploads/2026/03/Hyatt.jpg",
-    alt: "Fine dining plate with wine",
-    label: "Food & beverage",
-    categories: ["Hospitality", "Lifestyle"],
-  },
-  {
-    src: "https://avinashkotekar.com/wp-content/uploads/2026/03/Interior.jpg",
-    alt: "Luxury living and dining interior",
-    label: "Architecture",
-    categories: ["Real Estate", "Travel"],
-  },
-  {
-    src: "https://avinashkotekar.com/wp-content/uploads/2026/03/Skinvest.jpg",
-    alt: "Poolside skincare campaign",
-    label: "Lifestyle",
-    categories: ["Lifestyle"],
-  },
-  {
-    src: "https://avinashkotekar.com/wp-content/uploads/2026/03/Chef.jpg",
-    alt: "Chef preparing for service",
+    src: sitePath("/portfolio/slider/chef.jpg"),
+    alt: "Chef in a white uniform against a dark background",
     label: "Portrait",
-    categories: ["Portrait", "Hospitality"],
+    categories: ["People & Lifestyle", "Food & Beverage"],
   },
   {
-    src: "https://avinashkotekar.com/wp-content/uploads/2026/03/Industry.jpg",
-    alt: "Industrial product composition",
-    label: "Product",
-    categories: ["Real Estate", "Travel"],
+    src: sitePath("/portfolio/slider/park-hyatt.jpg"),
+    alt: "Restaurant interior at Park Hyatt Hyderabad",
+    label: "Hospitality",
+    categories: ["Hospitality", "Architecture"],
   },
+  {
+    src: sitePath("/portfolio/slider/skinvest.jpg"),
+    alt: "Skincare products beside a pool",
+    label: "Product",
+    categories: ["Product & Jewellery", "People & Lifestyle"],
+  },
+  {
+    src: sitePath("/portfolio/slider/lifestyle-kid.jpg"),
+    alt: "Woman enjoying a cocktail in warm light",
+    label: "Lifestyle",
+    categories: ["People & Lifestyle", "Hospitality"],
+  },
+  {
+    src: sitePath("/portfolio/slider/interior.jpg"),
+    alt: "A collection of contemporary residential interiors",
+    label: "Architecture",
+    categories: ["Architecture"],
+  },
+  {
+    src: sitePath("/portfolio/slider/health-care.jpg"),
+    alt: "Scenes of healthcare professionals and emergency care",
+    label: "Healthcare",
+    categories: ["Campaigns & Media"],
+  },
+  {
+    src: sitePath("/portfolio/slider/industry.jpg"),
+    alt: "Industrial components arranged for a product photograph",
+    label: "Product",
+    categories: ["Product & Jewellery"],
+  },
+  {
+    src: sitePath("/portfolio/slider/homepage-slider.jpg"),
+    alt: "A warmly lit restaurant interior",
+    label: "Hospitality",
+    categories: ["Hospitality", "Architecture"],
+  },
+  { src: sitePath("/portfolio/categories/food.webp"), alt: "Food and drink campaign photograph", label: "Food & Beverage", categories: ["Food & Beverage"] },
+  { src: sitePath("/portfolio/categories/architecture.webp"), alt: "A contemporary bedroom interior", label: "Architecture", categories: ["Architecture"] },
+  { src: sitePath("/portfolio/categories/jewellery-detail.webp"), alt: "Diamond jewellery against a dark textured background", label: "Jewellery", categories: ["Product & Jewellery"] },
+  { src: sitePath("/portfolio/categories/portrait.webp"), alt: "Portrait of a woman framed by leaves", label: "Portrait", categories: ["People & Lifestyle"] },
+  { src: sitePath("/portfolio/categories/healthcare.webp"), alt: "Healthcare campaign artwork", label: "Healthcare", categories: ["Campaigns & Media"] },
+  { src: sitePath("/portfolio/campaigns/multi-intel.webp"), alt: "Dancer in the Multi Intel campaign", label: "Multi Intel", categories: ["Campaigns & Media"] },
+  { src: sitePath("/portfolio/campaigns/beyond-classroom.webp"), alt: "Beyond Classroom campaign imagery", label: "Beyond Classroom", categories: ["Campaigns & Media"] },
+  { src: sitePath("/portfolio/campaigns/m2bb.webp"), alt: "M2BB campaign artwork", label: "M2BB", categories: ["Campaigns & Media"] },
+  { src: sitePath("/portfolio/campaigns/sunset.webp"), alt: "Figure silhouetted against a sunset", label: "Sunset", categories: ["Campaigns & Media"] },
+  { src: sitePath("/portfolio/prints/print-1.webp"), alt: "Packaged product photographed for print", label: "Print Work", categories: ["Campaigns & Media", "Product & Jewellery"] },
+  { src: sitePath("/portfolio/prints/print-2.webp"), alt: "Food packaging photographed for print", label: "Print Work", categories: ["Campaigns & Media", "Food & Beverage"] },
+  { src: sitePath("/portfolio/prints/print-3.webp"), alt: "Snack packaging campaign artwork", label: "Print Work", categories: ["Campaigns & Media", "Food & Beverage"] },
+  { src: sitePath("/portfolio/categories/corporate-portrait.webp"), alt: "Professional portrait of a woman in a white jacket", label: "Corporate Portrait", categories: ["People & Lifestyle"] },
+  { src: sitePath("/portfolio/categories/new-work.webp"), alt: "People outside a tropical resort building", label: "New Work", categories: ["Hospitality"] },
+  { src: sitePath("/portfolio/categories/iphone.webp"), alt: "Food photographed on an iPhone", label: "Shot on iPhone", categories: ["Food & Beverage"] },
+  { src: sitePath("/portfolio/categories/yoga.webp"), alt: "Yoga practitioner balancing outdoors", label: "Yoga", categories: ["People & Lifestyle"] },
 ];
+type Photograph = (typeof photographs)[number];
 
-const galleryTop = [photographs[3], photographs[0], photographs[5], photographs[1], photographs[6], photographs[4], photographs[2]];
-const galleryBottom = [photographs[2], photographs[6], photographs[1], photographs[4], photographs[0], photographs[3], photographs[5]];
+const galleryTop = photographs;
+const galleryBottom = [...photographs].reverse();
 
 const campaigns = [
-  { ...photographs[1], title: "Objects of Desire", year: "2026" },
-  { ...photographs[2], title: "The Table, Set", year: "2026" },
-  { ...photographs[0], title: "After Hours", year: "2026" },
-  { ...photographs[4], title: "A Summer State", year: "2026" },
-  { ...photographs[3], title: "Rooms With Rhythm", year: "2026" },
+  {
+    ...photographs[15], title: "Multi Intel",
+    purpose: "Show that a child's abilities extend across academics, sport, music, dance and other disciplines.",
+    outcome: "A series of finished campaign visuals presenting students in different roles, created for Dhruv Global School's wider education campaign across outdoor and institutional media.",
+    folder: "https://drive.google.com/drive/folders/1Jp1ARlZqdNB1EPskJBCIKoQJt5nnJYkD",
+    images: [photographs[15].src, sitePath("/portfolio/campaigns/multi-intel/music.webp"), sitePath("/portfolio/campaigns/multi-intel/running.webp"), sitePath("/portfolio/campaigns/multi-intel/yoga.webp")],
+  },
+  {
+    ...photographs[16], title: "Beyond Classroom",
+    purpose: "Communicate education beyond conventional academics through imagination, exploration and holistic development.",
+    outcome: "A campaign image and a collection of short films depicting children learning and exploring beyond the classroom, developed as part of the Dhruv Global School campaign.",
+    folder: "https://drive.google.com/drive/folders/1aerM5sZ5pbkmTsUPCF8YvLl_fb-bKSOD",
+    images: [photographs[16].src],
+  },
+  {
+    ...photographs[17], title: "M2BB",
+    purpose: "Build a visual series around people, books and the natural world.",
+    outcome: "The final project folder contains eight finished compositions, including portraits and scenes featuring the sea, trees and earth imagery.",
+    folder: "https://drive.google.com/drive/folders/1W4eWOolGuFnyjJ0FrQma899CwYxdTLDw",
+    images: [photographs[17].src, sitePath("/portfolio/campaigns/m2bb/sea.webp"), sitePath("/portfolio/campaigns/m2bb/tree.webp"), sitePath("/portfolio/campaigns/m2bb/globe.webp"), sitePath("/portfolio/campaigns/m2bb/book.webp"), sitePath("/portfolio/campaigns/m2bb/portrait.webp"), sitePath("/portfolio/campaigns/m2bb/barren.webp"), sitePath("/portfolio/campaigns/m2bb/hand-earth.webp")],
+  },
+  {
+    ...photographs[18], title: "Sunset",
+    purpose: "Explore warm evening light and silhouetted figures through a connected photographic series.",
+    outcome: "Eight selected photographs in the campaign folder form a consistent sunset-led visual story.",
+    folder: "https://drive.google.com/drive/folders/1HzIsdVLWK7II8PbIvBxD_8YwSYDlaxWr",
+    images: [photographs[18].src, sitePath("/portfolio/campaigns/sunset/mg-7717.webp"), sitePath("/portfolio/campaigns/sunset/mg-7674.webp"), sitePath("/portfolio/campaigns/sunset/mg-7649.webp"), sitePath("/portfolio/campaigns/sunset/2.webp"), sitePath("/portfolio/campaigns/sunset/3.webp"), sitePath("/portfolio/campaigns/sunset/4.webp"), sitePath("/portfolio/campaigns/sunset/6.webp")],
+  },
 ];
 
-const categoryDescriptions: Record<PhotoCategory, string> = {
-  Lifestyle: "People, ritual and tactile details, photographed with a calm editorial eye.",
-  "Real Estate": "Spaces and built environments shaped by light, material and considered composition.",
-  Jewellery: "Polished objects, texture and quiet drama for luxury product stories.",
-  Hospitality: "Atmosphere-led imagery for places, tables and the feeling of being welcomed.",
-  Portrait: "Human presence, gesture and character held in a single considered frame.",
-  Travel: "A sense of place, movement and discovery across destinations and experiences.",
+const videos = [
+  { src: sitePath("/portfolio/video/agua-5.mp4"), title: "Agua 5" },
+  { src: sitePath("/portfolio/video/westin-goa.mp4"), title: "Westin Goa" },
+];
+
+const categoryDescriptions: Record<Category, string> = {
+  All: "Photography and moving-image work across every category.",
+  Hospitality: "Restaurants, spaces and the details that shape a guest experience.",
+  "Food & Beverage": "Food, drink and the people behind the table.",
+  Architecture: "Interiors and built spaces photographed through light and form.",
+  "Product & Jewellery": "Product details, industrial objects and jewellery photography.",
+  "People & Lifestyle": "Portraits, movement and people in lived settings.",
+  "Campaigns & Media": "Campaign imagery, print work and moving-image projects.",
 };
+const workCategories = Object.keys(categoryDescriptions).filter((category) => category !== "All") as PhotoCategory[];
 
 const navItems = ["About", "Clients", "Campaign", "Thoughts", "Sale", "Testimonials", "Contact"];
 
 const socialLinks = [
-  { label: "Instagram", href: "https://www.instagram.com/avinashkotekar/", icon: "instagram" },
-  { label: "Facebook", href: "https://www.facebook.com/Avikotekar", icon: "facebook" },
-  { label: "Pinterest", href: "https://in.pinterest.com/avinashphot", icon: "pinterest" },
-  { label: "WhatsApp", href: "https://wa.me/917721008880", icon: "whatsapp" },
+  { label: "Instagram", href: "https://www.instagram.com/avinashkotekar/" },
 ] as const;
 
 const thoughts = [
@@ -173,45 +236,45 @@ function Logo() {
   return <img className="brand-logo" src={logo} alt="Avinash Kotekar" />;
 }
 
-type SocialIconName = (typeof socialLinks)[number]["icon"];
-
-function SocialIcon({ name }: { name: SocialIconName }) {
+function SocialIcon() {
   const common = { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.55, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
-
-  if (name === "instagram") {
-    return <svg {...common}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4.1" /><circle cx="17.4" cy="6.7" r=".85" fill="currentColor" stroke="none" /></svg>;
-  }
-
-  if (name === "facebook") {
-    return <svg {...common}><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v6h4v-6h3l1-4h-4V9c0-.7.3-1 1-1Z" fill="currentColor" stroke="none" /></svg>;
-  }
-
-  if (name === "pinterest") {
-    return <svg {...common}><path d="M8.5 21l1.6-6.4a5.7 5.7 0 0 1-.8-3.1c0-2.6 1.9-4.7 4.4-4.7 2.1 0 3.4 1.5 3.4 3.3 0 2.2-1.3 5.4-3.1 5.4-.9 0-1.6-.8-1.4-1.7l.5-2.1c.2-.9.4-1.7.4-2.3 0-1-.5-1.7-1.4-1.7-1.1 0-2 1.1-2 2.7 0 1 .3 1.7.3 1.7l-1.2 5c-.3 1.3-.4 2.6-.3 3.9" /></svg>;
-  }
-
-  return <svg {...common}><path d="M20.3 3.7A10.1 10.1 0 0 0 4.6 16.1L3.5 20.5l4.5-1.1A10.1 10.1 0 1 0 20.3 3.7Z" /><path d="M8.7 8.3c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.5.6c-.2.2-.2.4 0 .6.3.6 1.1 1.7 2.2 2.3 1.1.6 1.5.7 1.8.4l.7-.8c.2-.2.4-.2.7-.1l1.7.8c.3.1.4.3.3.6-.1.8-.8 1.7-1.7 1.9-.8.2-1.8 0-3.1-.6-1.3-.6-2.5-1.5-3.5-2.6-.9-1-1.5-2.1-1.7-3-.2-1 0-1.8.3-2.5Z" /></svg>;
+  return <svg {...common}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4.1" /><circle cx="17.4" cy="6.7" r=".85" fill="currentColor" stroke="none" /></svg>;
 }
 
 export default function Home() {
   const [activeCampaign, setActiveCampaign] = useState(2);
+  const [openCampaignIndex, setOpenCampaignIndex] = useState<number | null>(null);
+  const [campaignImageIndex, setCampaignImageIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<Category>("All");
-  const [categoryView, setCategoryView] = useState<PhotoCategory | null>(null);
+  const [categoryView, setCategoryView] = useState<Category | null>(null);
+  const [featuredPhoto, setFeaturedPhoto] = useState<Photograph | null>(null);
+  const [lightboxPhoto, setLightboxPhoto] = useState<Photograph | null>(null);
   const [activePrint, setActivePrint] = useState<(typeof prints)[number] | null>(null);
 
   const selectedPhotos = activeCategory === "All"
     ? photographs
     : photographs.filter((photo) => photo.categories.includes(activeCategory));
+  const categoryPhotos = categoryView === null ? [] : categoryView === "All"
+    ? photographs
+    : photographs.filter((photo) => photo.categories.includes(categoryView));
+  const displayedPhoto = featuredPhoto && categoryPhotos.includes(featuredPhoto) ? featuredPhoto : categoryPhotos[0];
   const marqueeTop = activeCategory === "All" ? galleryTop : selectedPhotos;
   const marqueeBottom = activeCategory === "All" ? galleryBottom : [...selectedPhotos].reverse();
 
-  const openCategoryForPhoto = (photo: (typeof photographs)[number]) => {
-    const category = photo.categories[0];
+  const openCategory = (category: Category, photo?: Photograph) => {
     setActiveCategory(category);
     setCategoryView(category);
+    setFeaturedPhoto(photo ?? (category === "All" ? photographs[0] : photographs.find((item) => item.categories.includes(category))) ?? null);
+    setLightboxPhoto(null);
   };
 
-  const closeCategoryView = () => setCategoryView(null);
+  const openCategoryForPhoto = (photo: Photograph) => openCategory(photo.categories[0], photo);
+  const closeCategoryView = () => { setLightboxPhoto(null); setCategoryView(null); };
+  const moveLightbox = (direction: number) => {
+    if (!lightboxPhoto || categoryPhotos.length < 2) return;
+    const index = categoryPhotos.indexOf(lightboxPhoto);
+    setLightboxPhoto(categoryPhotos[(index + direction + categoryPhotos.length) % categoryPhotos.length]);
+  };
 
   useEffect(() => {
     const root = document.documentElement;
@@ -235,7 +298,15 @@ export default function Home() {
   useEffect(() => {
     if (!categoryView) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeCategoryView();
+      if (event.key === "Escape") {
+        if (lightboxPhoto) setLightboxPhoto(null);
+        else closeCategoryView();
+      }
+      if (lightboxPhoto && (event.key === "ArrowLeft" || event.key === "ArrowRight")) {
+        const index = categoryPhotos.indexOf(lightboxPhoto);
+        const direction = event.key === "ArrowLeft" ? -1 : 1;
+        setLightboxPhoto(categoryPhotos[(index + direction + categoryPhotos.length) % categoryPhotos.length]);
+      }
     };
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -244,13 +315,34 @@ export default function Home() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [categoryView]);
+  }, [categoryView, lightboxPhoto]);
 
   const moveCampaign = (direction: number) => {
     setActiveCampaign((current) =>
       (current + direction + campaigns.length) % campaigns.length,
     );
   };
+
+  useEffect(() => {
+    if (openCampaignIndex === null) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        if (campaignImageIndex !== null) setCampaignImageIndex(null);
+        else setOpenCampaignIndex(null);
+      }
+      if (campaignImageIndex !== null && (event.key === "ArrowLeft" || event.key === "ArrowRight")) {
+        const count = campaigns[openCampaignIndex].images.length;
+        setCampaignImageIndex((campaignImageIndex + (event.key === "ArrowLeft" ? -1 : 1) + count) % count);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [openCampaignIndex, campaignImageIndex]);
 
   return (
     <main>
@@ -259,10 +351,6 @@ export default function Home() {
       <a className="skip-link" href="#about">Skip to content</a>
 
       <header className="site-header">
-        <a className="logo-link" href="#top" aria-label="Avinash Kotekar home">
-          <Logo />
-        </a>
-
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`}>
@@ -274,7 +362,7 @@ export default function Home() {
         <div className="desktop-socials" aria-label="Social media">
           {socialLinks.map((social) => (
             <a className="social-icon-link" key={social.label} href={social.href} target="_blank" rel="noreferrer" aria-label={social.label} title={social.label}>
-              <SocialIcon name={social.icon} />
+              <SocialIcon />
             </a>
           ))}
         </div>
@@ -302,7 +390,7 @@ export default function Home() {
             <div className="mobile-socials" aria-label="Social media">
               {socialLinks.map((social) => (
                 <a className="social-icon-link" key={social.label} href={social.href} target="_blank" rel="noreferrer" aria-label={social.label} title={social.label}>
-                  <SocialIcon name={social.icon} />
+                  <SocialIcon />
                 </a>
               ))}
             </div>
@@ -319,12 +407,6 @@ export default function Home() {
             </h1>
           </div>
           <div className="hero-mast-actions">
-            <label className="category-filter">
-              <span>Filter selected work</span>
-              <select value={activeCategory} onChange={(event) => setActiveCategory(event.target.value as Category)}>
-                {categoryOptions.map((category) => <option key={category} value={category}>{category}</option>)}
-              </select>
-            </label>
             <div className="hero-logo-display">
               <img src={logo} alt="Avinash Kotekar" className="enlarged-logo" />
             </div>
@@ -346,7 +428,7 @@ export default function Home() {
                     openCategoryForPhoto(photo);
                   }
                 }}
-                aria-label={`View all ${photo.categories[0]} photographs`}
+                aria-label={`View ${photo.label} and more in ${photo.categories[0]}`}
               >
                 <img src={photo.src} alt={index < photographs.length ? photo.alt : ""} />
                 <figcaption>
@@ -370,29 +452,70 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="work-index" aria-label="Browse work by category">
+        <span>Explore the work</span>
+        <div className="work-index-categories">
+          <button type="button" className={activeCategory === "All" ? "active" : ""} onClick={() => openCategory("All")}>All work</button>
+          {workCategories.map((category) => (
+            <button type="button" key={category} className={activeCategory === category ? "active" : ""} onClick={() => openCategory(category)}>
+              {category}
+            </button>
+          ))}
+        </div>
+      </section>
+
       {categoryView && (
         <div className="category-view" role="dialog" aria-modal="true" aria-labelledby="category-view-title">
           <button className="category-view-backdrop" type="button" aria-label="Close category view" onClick={closeCategoryView} />
           <div className="category-view-panel">
             <div className="category-view-header">
               <div>
-                <p className="eyebrow">Category archive · {selectedPhotos.length} frames</p>
-                <h2 id="category-view-title">{categoryView}<em>.</em></h2>
+                <p className="eyebrow">Category archive · {categoryPhotos.length} images{categoryView === "All" || categoryView === "Campaigns & Media" ? ` · ${videos.length} films` : ""}</p>
+                <h2 id="category-view-title">{categoryView === "All" ? "All work" : categoryView}<em>.</em></h2>
                 <p>{categoryDescriptions[categoryView]}</p>
               </div>
               <button className="close-button" type="button" onClick={closeCategoryView} aria-label="Close category view">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
+            {displayedPhoto && (
+              <button className="category-featured" type="button" onClick={() => setLightboxPhoto(displayedPhoto)} aria-label={`View ${displayedPhoto.label} image full size`}>
+                <img src={displayedPhoto.src} alt={displayedPhoto.alt} />
+                <span>{displayedPhoto.label} <small>View full size ↗</small></span>
+              </button>
+            )}
             <div className="category-view-grid">
-              {photographs.filter((photo) => photo.categories.includes(categoryView)).map((photo, index) => (
-                <figure key={`${photo.src}-${index}`}>
+              {categoryPhotos.map((photo, index) => (
+                <button className={displayedPhoto === photo ? "active" : ""} type="button" key={`${photo.src}-${index}`} onClick={() => { setFeaturedPhoto(photo); setLightboxPhoto(photo); }} aria-label={`View ${photo.label} image full size`}>
                   <img src={photo.src} alt={photo.alt} />
-                  <figcaption><span>{photo.label}</span><small>AK · {String(index + 1).padStart(2, "0")}</small></figcaption>
-                </figure>
+                  <span>{photo.label}</span>
+                </button>
               ))}
             </div>
+            {(categoryView === "All" || categoryView === "Campaigns & Media") && (
+              <div className="category-video-section">
+                <h3>Moving image</h3>
+                <div className="category-video-grid">
+                  {videos.map((video) => (
+                    <figure key={video.src}>
+                      <video src={video.src} controls preload="metadata" playsInline aria-label={video.title} />
+                      <figcaption>{video.title}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
+          {lightboxPhoto && (
+            <div className="photo-lightbox" role="dialog" aria-modal="true" aria-label={`${lightboxPhoto.label} full size image`}>
+              <button className="photo-lightbox-backdrop" type="button" onClick={() => setLightboxPhoto(null)} aria-label="Close full size image" />
+              <button className="photo-lightbox-close" type="button" onClick={() => setLightboxPhoto(null)} aria-label="Close full size image">×</button>
+              {categoryPhotos.length > 1 && <button className="photo-lightbox-arrow photo-lightbox-prev" type="button" onClick={() => moveLightbox(-1)} aria-label="Previous image">←</button>}
+              <img src={lightboxPhoto.src} alt={lightboxPhoto.alt} />
+              {categoryPhotos.length > 1 && <button className="photo-lightbox-arrow photo-lightbox-next" type="button" onClick={() => moveLightbox(1)} aria-label="Next image">→</button>}
+              <p>{lightboxPhoto.label} · {categoryPhotos.indexOf(lightboxPhoto) + 1} / {categoryPhotos.length}</p>
+            </div>
+          )}
         </div>
       )}
 
@@ -401,9 +524,12 @@ export default function Home() {
           <p className="eyebrow">Approach · 00</p>
           <span>Based in India<br />Working worldwide</span>
         </div>
-        <div className="owner-portrait" role="img" aria-label="Owner portrait placeholder">
-          <div className="portrait-mark">AK</div>
-          <span>Owner portrait<br />to be added</span>
+        <div className="owner-portrait">
+          <img src={sitePath("/assets/AK.JPEG")} alt="Avinash Kotekar" />
+          <div className="owner-caption">
+            <span className="owner-name">Avinash Kotekar</span>
+            <a className="owner-portfolio" href={sitePath("/portfolio/")}>Portfolio</a>
+          </div>
         </div>
         <div className="about-copy">
           <h2 id="about-title">A visual language with <em>purpose.</em></h2>
@@ -445,10 +571,10 @@ export default function Home() {
                 <button
                   className={`campaign-card ${offset === 0 ? "is-active" : ""}`}
                   key={campaign.title}
-                  onClick={() => setActiveCampaign(index)}
+                  onClick={() => { setActiveCampaign(index); setOpenCampaignIndex(index); }}
                   style={style}
                   type="button"
-                  aria-label={`Show campaign ${campaign.title}`}
+                  aria-label={`Open ${campaign.title} campaign`}
                   aria-current={offset === 0 ? "true" : undefined}
                 >
                   <img src={campaign.src} alt={campaign.alt} />
@@ -456,7 +582,6 @@ export default function Home() {
                   <span className="campaign-card-copy">
                     <span>{campaign.label}</span>
                     <strong>{campaign.title}</strong>
-                    <small>{campaign.year}</small>
                   </span>
                 </button>
               );
@@ -470,10 +595,10 @@ export default function Home() {
                 <button
                   key={campaign.title}
                   className={index === activeCampaign ? "active" : ""}
-                  onClick={() => setActiveCampaign(index)}
+                  onClick={() => { setActiveCampaign(index); setOpenCampaignIndex(index); }}
                   type="button"
                   role="tab"
-                  aria-label={campaign.title}
+                  aria-label={`Open ${campaign.title} campaign`}
                   aria-selected={index === activeCampaign}
                 />
               ))}
@@ -482,6 +607,46 @@ export default function Home() {
           </div>
         </div>
       </RevealSection>
+
+      {openCampaignIndex !== null && (() => {
+        const campaign = campaigns[openCampaignIndex];
+        return (
+          <div className="category-view campaign-detail" role="dialog" aria-modal="true" aria-labelledby="campaign-detail-title">
+            <button className="category-view-backdrop" type="button" aria-label="Close campaign" onClick={() => { setCampaignImageIndex(null); setOpenCampaignIndex(null); }} />
+            <div className="category-view-panel campaign-detail-panel">
+              <div className="category-view-header">
+                <div>
+                  <p className="eyebrow">Campaign archive · {campaign.images.length} images</p>
+                  <h2 id="campaign-detail-title">{campaign.title}<em>.</em></h2>
+                </div>
+                <button className="close-button" type="button" onClick={() => { setCampaignImageIndex(null); setOpenCampaignIndex(null); }} aria-label="Close campaign"><span aria-hidden="true">×</span></button>
+              </div>
+              <div className="campaign-detail-story">
+                <div><h3>Purpose</h3><p>{campaign.purpose}</p></div>
+                <div><h3>Outcome</h3><p>{campaign.outcome}</p></div>
+              </div>
+              <div className="campaign-detail-grid">
+                {campaign.images.map((src, index) => (
+                  <button key={src} type="button" onClick={() => setCampaignImageIndex(index)} aria-label={`View ${campaign.title} image ${index + 1} full size`}>
+                    <img src={src} alt={`${campaign.title} campaign image ${index + 1}`} />
+                  </button>
+                ))}
+              </div>
+              <a className="campaign-folder-link" href={campaign.folder} target="_blank" rel="noopener noreferrer">Open full campaign folder ↗</a>
+            </div>
+            {campaignImageIndex !== null && (
+              <div className="photo-lightbox" role="dialog" aria-modal="true" aria-label={`${campaign.title} full size image`}>
+                <button className="photo-lightbox-backdrop" type="button" onClick={() => setCampaignImageIndex(null)} aria-label="Close full size image" />
+                <button className="photo-lightbox-close" type="button" onClick={() => setCampaignImageIndex(null)} aria-label="Close full size image">×</button>
+                {campaign.images.length > 1 && <button className="photo-lightbox-arrow photo-lightbox-prev" type="button" onClick={() => setCampaignImageIndex((campaignImageIndex - 1 + campaign.images.length) % campaign.images.length)} aria-label="Previous image">←</button>}
+                <img src={campaign.images[campaignImageIndex]} alt={`${campaign.title} campaign image ${campaignImageIndex + 1}`} />
+                {campaign.images.length > 1 && <button className="photo-lightbox-arrow photo-lightbox-next" type="button" onClick={() => setCampaignImageIndex((campaignImageIndex + 1) % campaign.images.length)} aria-label="Next image">→</button>}
+                <p>{campaign.title} · {campaignImageIndex + 1} / {campaign.images.length}</p>
+              </div>
+            )}
+          </div>
+        );
+      })()}
 
       <RevealSection className="thoughts-section" id="thoughts" labelledBy="thoughts-title">
         <div className="wide-heading">
@@ -604,8 +769,8 @@ export default function Home() {
                   "",
                   "Requirement:",
                   String(values.get("requirement") || ""),
-                ].join("\\n");
-                window.location.href = `mailto:hello@avinashkotekar.com?subject=${encodeURIComponent(`Project enquiry from ${name || "website visitor"}`)}&body=${encodeURIComponent(body)}`;
+                ].join("\n");
+                window.location.href = `mailto:Avinashrkotekar@gmail.com?subject=${encodeURIComponent(`Project enquiry from ${name || "website visitor"}`)}&body=${encodeURIComponent(body)}`;
               }}
             >
               <label className="contact-field">
@@ -638,7 +803,7 @@ export default function Home() {
           <div className="footer-socials" aria-label="Social media">
             {socialLinks.map((social) => (
               <a className="social-icon-link" key={social.label} href={social.href} target="_blank" rel="noreferrer" aria-label={social.label} title={social.label}>
-                <SocialIcon name={social.icon} />
+                <SocialIcon />
               </a>
             ))}
           </div>

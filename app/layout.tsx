@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sitePath } from "@/lib/site-path";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -6,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "Photography and creative direction across hospitality, food, architecture, lifestyle and luxury campaigns.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: sitePath("/favicon.ico"),
+    shortcut: sitePath("/favicon.ico"),
   },
 };
 

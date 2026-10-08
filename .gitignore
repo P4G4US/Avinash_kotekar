@@ -40,3 +40,8 @@ next-env.d.ts
 /.sites-runtime/
 /outputs/
 /work/
+
+# Large files excluded temporarily
+/public/Avinash-Kotekar-Portfolio.pdf
+/public/Avinash-Kotekar-Portfolio.pptx
+/assets/New work /DSC08651-HDR2.png

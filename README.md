@@ -31,19 +31,39 @@ git push -u origin main
 For later changes: `git add .`, `git commit -m "Describe the change"`, then
 `git push`.
 
-## Hosting and custom domain
+## GitLab Pages
 
-This project is prepared for Vinext/Cloudflare-compatible hosting. Connect the
-repository to a provider that can run `npm run build` and its generated server
-output, such as Cloudflare Workers or another Node/Cloudflare-compatible
-platform. Add your custom domain through that provider and update DNS as
-directed. Do not upload `node_modules`, `dist`, or `.next`; the host generates
-those during deployment.
+Import or push this repository into a GitLab project. The root `.gitlab-ci.yml`
+builds the static portfolio and publishes `out/` on pushes to the default branch.
+Enable a GitLab runner, then check **Build → Pipelines** and **Deploy → Pages**.
+The pipeline derives the asset prefix from `CI_PAGES_URL`, supporting both unique
+Pages domains and project-path URLs. Rebuild after changing the Pages domain.
+
+To verify locally:
+
+```bash
+npm run build:pages
+# Optional: verify a project-path deployment instead
+NEXT_PUBLIC_BASE_PATH=/Avinash_kotekar npm run build:pages
+```
+
+The export contains `out/index.html` and `out/portfolio/index.html`, plus the
+photographs, videos, PDF, and PowerPoint copied from `public/`. Do not commit
+`out/` or `node_modules/`. The Pages pipeline creates the deployable output.
+This uses Next.js static export; the existing Vinext commands remain available
+for local development and Cloudflare-compatible hosting. The Pages TypeScript
+configuration checks the portfolio without including unused Cloudflare examples.
 
 Photography assets currently use the original remote image URLs from
 `avinashkotekar.com`. Replace the URLs in `app/page.tsx` to use your own
-storage or CDN if needed. The contact form opens a prefilled email to
-`hello@avinashkotekar.com`.
+storage or CDN if needed. The contact form opens the visitor's mail app with
+a prefilled message addressed to `Avinashrkotekar@gmail.com`; the visitor sends
+the message from there.
+
+The marquee and category archive use a curated snapshot of images and videos from the
+[Website Content Drive folder](https://drive.google.com/drive/folders/1nM8Rby9DZ6j8alV0v7rjraYcgqkXXKlc).
+The selected files are stored in `public/portfolio/`; later Drive changes
+need to be reviewed and imported into the site again.
 
 ---
 
